@@ -1,7 +1,7 @@
 ---
 title: "LASER Badge"
 subtitle: "LASER Institute Orientation"
-author: "YOUR NAME HERE"
+author: "Lori Foote"
 date: "`r format(Sys.Date(),'%B %e, %Y')`"
 output:
   html_document:
@@ -157,9 +157,11 @@ What do you notice about this data set? What do you wonder? Add one-two
 thoughts following the dashes next (you can add additional dashes if you
 like!):
 
--   
+-   There are 603 observations (student rows with the same data for
+    each).
 
--   
+-   Columns of different data come in different forms (numbers,
+    characters, logic)
 
 There are other ways to inspect your data; the `glimpse()` function
 provides one such way. Run the code below to take a glimpse at your
@@ -184,11 +186,11 @@ your area of work and/or research.
 
 What rows typically (or you think may) represent:
 
--   
+-   student cases or school cases
 
 What columns typically (or you think may) represent:
 
--   
+-   the variables collected for each of the students or schools
 
 Next, we'll use a few functions that are handy for preparing data in
 table form.
@@ -267,7 +269,8 @@ d |>
 What happens when you change the cut-off from 70 to something else? Add
 a thought (or more):
 
--   
+-   If the cut-off is higher, more students are excluded, lessening the
+    total number of rows in the tibbledd
 
 ### Arrange
 
@@ -357,7 +360,7 @@ consider this list of valid color names here:
 
 ```{r}
 ggplot(d, aes(x = FinalGradeCEMS)) +
-  geom_histogram(fill = "blue")
+  geom_histogram(fill = "aquamarine3")
 ```
 
 Finally, we'll make one more change; visualize the distribution of
@@ -366,8 +369,8 @@ so by swapping out the name for another variable with FinalGradeCEMS.
 Also, change the color to one other than blue.
 
 ```{r}
-ggplot(d, aes(x = FinalGradeCEMS)) +
-  geom_histogram(fill = "blue")
+ggplot(d, aes(x = total_points_possible)) +
+  geom_histogram(fill = "burlywood2")
 ```
 
 ### Reach 2 🎉
@@ -378,7 +381,7 @@ the names of two variables to the code below for what is now simply XXX
 (a placeholder).
 
 ```{r}
-ggplot(d, aes(x = XXX, y = XXX)) +
+ggplot(d, aes(x = total_points_possible, y = total_points_earned)) +
   geom_point()
 ```
 
@@ -412,7 +415,7 @@ results? We're going to dive into this *much* more: if you have many
 questions now, you're in the right spot!
 
 ```{r}
-m2 <- lm(FinalGradeCEMS ~ TimeSpent + subject, data = d)
+m2 <- lm(FinalGradeCEMS ~ TimeSpent + subject + int, data = d)
 summary(m2)
 ```
 
